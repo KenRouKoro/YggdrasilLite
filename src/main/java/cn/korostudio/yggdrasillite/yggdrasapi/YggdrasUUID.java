@@ -9,8 +9,10 @@ public class YggdrasUUID {
     }
     public static UUID generateNormalUUID(){
         long time = System.currentTimeMillis();
-        int random = (int) (Math.random() * Integer.MAX_VALUE);
-        String uuid = new UUID(time, random).toString();
-        return UUID.fromString(uuid.substring(0, uuid.length () - 6) + "000000");
+        long random = (long) (Math.random() * Integer.MAX_VALUE);
+        random = random * (long) (Math.random() * Integer.MAX_VALUE);
+        time = time << 16;
+        String uuid = new UUID(random,time).toString();
+        return UUID.fromString(uuid.substring(0, uuid.length () - 4) + "ffff");
     }
 }
