@@ -1,11 +1,9 @@
-package cn.korostudio.yggdrasillite.yggdras_api.authserver;
+package cn.korostudio.yggdrasillite.yggdrasapi.controller.auth;
 
 import cn.hutool.json.JSONObject;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/authserver")
