@@ -1,4 +1,4 @@
-package cn.korostudio.yggdrasillite;
+package cc.sirrus.yggdrasillite;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

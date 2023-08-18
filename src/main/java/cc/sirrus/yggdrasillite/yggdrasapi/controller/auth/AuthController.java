@@ -1,4 +1,4 @@
-package cn.korostudio.yggdrasillite.yggdrasapi.controller.auth;
+package cc.sirrus.yggdrasillite.yggdrasapi.controller.auth;
 
 import cn.hutool.json.JSONObject;
 import jakarta.servlet.http.HttpServletRequest;

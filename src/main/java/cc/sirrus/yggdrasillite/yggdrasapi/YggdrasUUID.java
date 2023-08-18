@@ -1,4 +1,4 @@
-package cn.korostudio.yggdrasillite.yggdrasapi;
+package cc.sirrus.yggdrasillite.yggdrasapi;
 
 import java.nio.charset.StandardCharsets;
 import java.util.UUID;

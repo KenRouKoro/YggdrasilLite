@@ -1,4 +1,4 @@
-package cn.korostudio.yggdrasillite.yggdrasapi.controller.session;
+package cc.sirrus.yggdrasillite.yggdrasapi.controller.session;
 
 import cn.hutool.json.JSONObject;
 import jakarta.servlet.http.HttpServletRequest;
