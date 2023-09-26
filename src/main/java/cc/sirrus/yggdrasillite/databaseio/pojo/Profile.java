@@ -13,10 +13,10 @@ public class Profile {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String pid;
+    private Integer pid;
     private UUID uuid;  //! 游戏的uuid
-    private String uid; //! 对应目标用户的uid
-    @ManyToOne
+    private Integer uid; //! 对应目标用户的uid
+    @ManyToOne(targetEntity = User.class)
     @JoinColumn(name = "uid",referencedColumnName = "uid")
     private User user;
     private String name;

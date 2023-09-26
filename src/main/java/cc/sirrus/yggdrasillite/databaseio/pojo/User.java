@@ -12,16 +12,16 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String uid;
+    private Integer uid;
     private String password_hash;
     private String name;
     private String preferredLanguage;
-    @OneToMany
-    @JoinColumn(name = "uid", referencedColumnName = "uid")
+    @OneToMany(targetEntity = Profile.class,mappedBy = "uid",fetch = FetchType.LAZY)
+    //@JoinColumn(name = "uid", referencedColumnName = "uid")
     List<Profile> profiles;
     @Getter
-    @OneToMany
-    @JoinColumn(name = "uid", referencedColumnName = "uid")
+    @OneToMany(targetEntity = Token.class,mappedBy = "uid",fetch = FetchType.LAZY)
+    //@JoinColumn(name = "uid", referencedColumnName = "uid")
     List<Token> tokens;
 
     public User() {
@@ -39,7 +39,7 @@ public class User {
 
 
     public void setUid(String id) {
-        this.uid = id;
+        this.uid = Integer.valueOf(id);
     }
 
     public void setName(String name) {
