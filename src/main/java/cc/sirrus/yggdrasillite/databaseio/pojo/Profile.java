@@ -1,24 +1,23 @@
 package cc.sirrus.yggdrasillite.databaseio.pojo;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
-@Getter
+@Data
 @Entity
-@Table(name = "profile")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Profile {
-
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer pid;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String pid;
     private UUID uuid;  //! 游戏的uuid
-    private Integer uid; //! 对应目标用户的uid
-    @ManyToOne(targetEntity = User.class)
-    @JoinColumn(name = "uid",referencedColumnName = "uid")
-    private User user;
+    @ManyToOne
+    private User users; // 与User的多对一关系
     private String name;
     private Long timestamp;
     private String model_type;
@@ -28,63 +27,10 @@ public class Profile {
     private String skin_url;
     private String cape_url;
 
-
-        public Profile() {
-
-    }
-        public void init(
-            UUID uuid,
-            User user,
-            String name,
-            Long timestamp,
-            String model_type,
-            Boolean uploadable_skin,
-            Boolean uploadable_cape,
-            String skin_url,
-            String cape_url
-        ) {
-        this.uuid = uuid;
-        this.user = user;
-        this.name = name;
-        this.timestamp = timestamp;
-        this.model_type = model_type;
-        this.uploadable_skin = uploadable_skin;
-        this.uploadable_cape = uploadable_cape;
-        this.skin_url = skin_url;
-        this.cape_url = cape_url;
-    }
-
-
-
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setModel_type(String model_type) {
-        this.model_type = model_type;
-    }
-
-    public void setUploadable_skin(Boolean uploadable_skin) {
-        this.uploadable_skin = uploadable_skin;
-    }
-
-    public void setUploadable_cape(Boolean uploadable_cape) {
-        this.uploadable_cape = uploadable_cape;
-    }
-
-    public void setSkin_url(String skin_url) {
-        this.skin_url = skin_url;
-    }
-
-    public void setCape_url(String cape_url) {
-        this.cape_url = cape_url;
-    }
-
-    public static class Token {
+    public void setUsers(User users) {
+        this.users = users;
+        if (!users.getProfiles().contains(this)) { // 防止无限循环
+            users.getProfiles().add(this);
+        }
     }
 }
