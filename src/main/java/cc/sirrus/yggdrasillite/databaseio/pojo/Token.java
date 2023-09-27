@@ -18,11 +18,16 @@ public class Token {
     private User users; // 与User的多对一关系
     private String access_token;
     private String client_token;
+    @OneToOne
+    private Profile profile;
 
     public void setUsers(User users) {
         this.users = users;
         if (!users.getTokens().contains(this)) { // 防止无限循环
             users.getTokens().add(this);
         }
+    }
+    public void setProfile(Profile profile){
+        this.profile = profile;
     }
 }

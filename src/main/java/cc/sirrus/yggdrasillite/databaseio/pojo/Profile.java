@@ -21,11 +21,16 @@ public class Profile {
     private String name;
     private Long timestamp;
     private String model_type;
-    // default  slim
+    //? default / slim / ysm
     private Boolean uploadable_skin;
     private Boolean uploadable_cape;
     private String skin_url;
     private String cape_url;
+    //? 原版部分
+    private Boolean uploadable_community_model;
+    private String community_model_name;
+    //? YSM/CPM支持
+
 
     public void setUsers(User users) {
         this.users = users;
